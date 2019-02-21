@@ -10,9 +10,12 @@ steps:
 - bash: |
     set -e
     sudo xcode-select --switch /Applications/Xcode_10.1.app/Contents/Developer
-    brew tap osrf/simulation
-    TAP_LOCATION="$(brew --repo osrf/simulation)"
+    brew tap scpeters/simulation
+    TAP_LOCATION="$(brew --repo scpeters/simulation)"
     sudo rm -rf "$TAP_LOCATION"
     sudo ln -s "$PWD" "$TAP_LOCATION"
     brew test-bot --fast
   displayName: 'Run brew test-bot'
+  env:
+    HOMEBREW_NO_ANALYTICS: 1
+    HOMEBREW_NO_AUTO_UPDATE: 1
