@@ -13,7 +13,7 @@ class IgnitionPlugin1 < Formula
 
   depends_on "cmake"
   depends_on "ignition-cmake2"
-  depends_on :macos => :high_sierra # c++17
+  depends_on :macos => :high_sierra
   depends_on "pkg-config"
 
   def install
