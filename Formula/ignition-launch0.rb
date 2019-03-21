@@ -1,8 +1,9 @@
 class IgnitionLaunch0 < Formula
   desc "Launch libraries for robotics applications"
   homepage "https://bitbucket.org/ignitionrobotics/ign-launch"
-  url "https://osrf-distributions.s3.amazonaws.com/ign-launch/releases/ignition-launch-0.2.0.tar.bz2"
-  sha256 "5becd254b5e47668e41b2da676bae16c119a856ed2ea0a0de661a555fcd5f685"
+  url "https://bitbucket.org/ignitionrobotics/ign-launch/get/c541a5ac7373.tar.gz"
+  version "0.2.1~pre0~1~c541a5ac7373"
+  sha256 "8e8960acf600072dfabeaf2985e216ce6c6cb70b7c5297ba19da6b13acf92d09"
 
   bottle do
     root_url "https://osrf-distributions.s3.amazonaws.com/bottles-simulation"
@@ -29,8 +30,7 @@ class IgnitionLaunch0 < Formula
     system "make", "install"
   end
 
-  # TODO: fix test. Failing: https://build.osrfoundation.org/job/generic-release-homebrew_bottle_builder/209/label=osx_mojave/
-  # test do
-  #  system "ignition", "-run", "config/gazebo.ign"
-  # end
+  test do
+   system "ign", "launch", "-f", "gazebo.ign"
+  end
 end
