@@ -39,7 +39,6 @@ class Ogre21 < Formula
     ENV.m64
 
     cmake_args = [
-      "-DOGRE_BUILD_RENDERSYSTEM_GL3PLUS:BOOL=OFF",
       "-DOGRE_BUILD_LIBS_AS_FRAMEWORKS=OFF",
       "-DOGRE_FULL_RPATH:BOOL=FALSE",
       "-DOGRE_BUILD_DOCS:BOOL=FALSE",
@@ -48,6 +47,7 @@ class Ogre21 < Formula
       "-DOGRE_BUILD_SAMPLES2:BOOL=FALSE",
       "-DOGRE_INSTALL_SAMPLES_SOURCE:BOOL=FALSE",
     ]
+    cmake_args << "-DOGRE_BUILD_RENDERSYSTEM_GL3PLUS:BOOL=OFF" if MacOS::Xcode.version >= "10"
     cmake_args.concat std_cmake_args
 
     mkdir "build" do
