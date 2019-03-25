@@ -1,9 +1,11 @@
 class Ogre21 < Formula
   desc "Scene-oriented 3D engine written in c++"
   homepage "https://www.ogre3d.org/"
-  url "https://bitbucket.org/sinbad/ogre/get/06a386fa64e79a7204a90faf53da1735743f6c2e.tar.bz2"
-  version "2.0.9999~20180616~06a386f"
-  sha256 "d2e28bfcfbb1277355047c1d8bcd141b05b83af52d277725168e4281eac92a6d"
+  url "https://bitbucket.org/sinbad/ogre/get/bf5de3029fd5a88d103ff99d7b2f94a5f8396ac9.tar.bz2"
+  version "2.0.9999~20190325~bf5de30"
+  sha256 "3949377daf5485847eeb78e420c3de4d8ed522bab8ac4c053c3deb4daa4bf4bd"
+
+  head "https://bitbucket.org/sinbad/ogre", :branch => "v2-1", :using => :hg
 
   bottle do
     root_url "https://osrf-distributions.s3.amazonaws.com/ogre/releases"
@@ -17,6 +19,7 @@ class Ogre21 < Formula
   depends_on "freeimage"
   depends_on "freetype"
   depends_on "libzzip"
+  depends_on "rapidjson"
   depends_on "tbb"
   depends_on :x11
 
@@ -36,11 +39,13 @@ class Ogre21 < Formula
     ENV.m64
 
     cmake_args = [
+      "-DOGRE_BUILD_RENDERSYSTEM_GL3PLUS:BOOL=OFF",
       "-DOGRE_BUILD_LIBS_AS_FRAMEWORKS=OFF",
       "-DOGRE_FULL_RPATH:BOOL=FALSE",
       "-DOGRE_BUILD_DOCS:BOOL=FALSE",
       "-DOGRE_INSTALL_DOCS:BOOL=FALSE",
       "-DOGRE_BUILD_SAMPLES:BOOL=FALSE",
+      "-DOGRE_BUILD_SAMPLES2:BOOL=FALSE",
       "-DOGRE_INSTALL_SAMPLES_SOURCE:BOOL=FALSE",
     ]
     cmake_args.concat std_cmake_args
