@@ -2,7 +2,14 @@ name: brew test-bot
 on:
   push:
     branches: master
-  pull_request: []
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: url to load
+        type: string
+        default: relative
+        required: true
 jobs:
   test-bot:
     runs-on: macos-latest
